@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import ThemeToggle from "@/components/ThemeToggle";
 import SearchBar from "@/components/SearchBar";
 import InformationContainer from "@/components/InformationContainer";
-import {motion, AnimatePresence} from "framer-motion"
+import {motion, AnimatePresence, LayoutGroup} from "framer-motion"
 
 export default function AppContainer(props: {
     isDark: boolean
@@ -38,24 +38,26 @@ export default function AppContainer(props: {
         <div
             className={"bg-gray-100 dark:bg-slate-900 px-4 py-6 w-full min-h-screen dark:text-white flex items-center"}>
             <div className={"max-w-2xl w-full mx-auto"}>
-                <section className={"flex justify-between items-center mb-8"}>
-                    <h1 className={"text-xl font-bold"}>DevFinder</h1>
+                <LayoutGroup>
+                    <motion.section layout className={"flex justify-between items-center mb-8"}>
+                        <h1 className={"text-xl font-bold"}>DevFinder</h1>
 
-                    <ThemeToggle isDark={props.isDark} clickHandler={props.switchTheme}/>
-                </section>
+                        <ThemeToggle isDark={props.isDark} clickHandler={props.switchTheme}/>
+                    </motion.section>
 
-                <SearchBar handleSearch={search}/>
+                    <SearchBar handleSearch={search}/>
 
-                <AnimatePresence>
-                    {information !== undefined && (
-                        <motion.section
-                            initial={{opacity: 0}}
-                            animate={{opacity: 1}}
-                        >
-                            <InformationContainer information={information}/>
-                        </motion.section>
-                    )}
-                </AnimatePresence>
+                    <AnimatePresence>
+                        {information !== undefined && (
+                            <motion.section layout
+                                initial={{opacity: 0}}
+                                animate={{opacity: 1}}
+                            >
+                                <InformationContainer information={information}/>
+                            </motion.section>
+                        )}
+                    </AnimatePresence>
+                </LayoutGroup>
             </div>
         </div>
     )
