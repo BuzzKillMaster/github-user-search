@@ -40,7 +40,7 @@ export default function Home() {
                 <meta name="description"
                       content="DevFinder enables you to search for any developer's username on GitHub and get a quick summary of their profile."/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                {/*<link rel="icon" href="/favicon.ico" />*/}
+                <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className={isDark ? "dark" : ""}>
                 <AppContainer isDark={isDark} switchTheme={switchTheme}/>
