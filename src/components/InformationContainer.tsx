@@ -5,23 +5,10 @@ import {BsTwitter} from "react-icons/bs";
 import {MdLocationOn} from "react-icons/md";
 import {AiOutlineLink} from "react-icons/ai";
 import {HiOutlineOfficeBuilding} from "react-icons/hi";
+import DeveloperInformation from "@/types/DeveloperInformation";
 
 export default function InformationContainer(props: {
-    information: {
-        login: string
-        avatar_url: string
-        html_url: string
-        name: string
-        company: string
-        blog: string
-        location: string
-        bio: string
-        twitter_username: string
-        public_repos: number
-        followers: number
-        following: number
-        created_at: string
-    }
+    information: DeveloperInformation
 }) {
     const stringChecker = (input: string, output: string = "Not found") => {
         return input === null || input.length === 0 ? output : input

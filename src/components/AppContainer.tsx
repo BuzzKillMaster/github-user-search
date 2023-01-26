@@ -3,12 +3,13 @@ import ThemeToggle from "@/components/ThemeToggle";
 import SearchBar from "@/components/SearchBar";
 import InformationContainer from "@/components/InformationContainer";
 import {motion, AnimatePresence, LayoutGroup} from "framer-motion"
+import DeveloperInformation from "@/types/DeveloperInformation";
 
 export default function AppContainer(props: {
     isDark: boolean
     switchTheme: () => void
 }) {
-    const [information, setInformation] = useState()
+    const [information, setInformation] = useState<DeveloperInformation>()
     const [isSearching, setIsSearching] = useState(false)
 
     const search = async (query: string) => {
@@ -55,17 +56,21 @@ export default function AppContainer(props: {
 
                     <SearchBar handleSearch={search} isSearching={isSearching}/>
 
-                    <AnimatePresence>
-                        {information !== undefined && (
-                            <motion.section layout
-                                initial={{opacity: 0}}
-                                animate={{opacity: 1}}
-                                transition={{ delay: 0.5 }}
-                            >
-                                <InformationContainer information={information}/>
-                            </motion.section>
-                        )}
-                    </AnimatePresence>
+                    <div className={"grid"}>
+                        <AnimatePresence>
+                            {information !== undefined && (
+                                <motion.section layout
+                                                key={information.name}
+                                                initial={{opacity: 0}}
+                                                animate={{ opacity: 1, transition: { delay: 0.5, duration: 0.5 } }}
+                                                exit={{ opacity: 0, transition: { duration: 0.5 } }}
+                                                className={"row-span-full col-span-full"}
+                                >
+                                    <InformationContainer information={information}/>
+                                </motion.section>
+                            )}
+                        </AnimatePresence>
+                    </div>
                 </LayoutGroup>
             </div>
         </div>
