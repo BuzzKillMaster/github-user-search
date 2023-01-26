@@ -14,7 +14,7 @@ export default function SearchBar(props: {
     }
 
     return (
-        <motion.form layout onSubmit={search} className={"bg-gray-200 dark:bg-slate-700 flex items-stretch p-3 rounded-xl"}>
+        <motion.form layout onSubmit={search} transition={{ duration: 0.5 }} className={"bg-gray-200 dark:bg-slate-700 flex items-stretch p-3 rounded-xl"}>
             <div className={"text-xl pl-3 flex items-center"}>
                 <BsSearch/>
             </div>

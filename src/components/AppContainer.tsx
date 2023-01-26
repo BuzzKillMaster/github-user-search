@@ -47,7 +47,7 @@ export default function AppContainer(props: {
             className={"bg-gray-100 dark:bg-slate-900 px-4 py-6 w-full min-h-screen dark:text-white flex items-center"}>
             <div className={"max-w-2xl w-full mx-auto"}>
                 <LayoutGroup>
-                    <motion.section layout className={"flex justify-between items-center mb-8"}>
+                    <motion.section layout transition={{ duration: 0.5 }} className={"flex justify-between items-center mb-8"}>
                         <h1 className={"text-xl font-bold"}>DevFinder</h1>
 
                         <ThemeToggle isDark={props.isDark} clickHandler={props.switchTheme}/>
@@ -60,6 +60,7 @@ export default function AppContainer(props: {
                             <motion.section layout
                                 initial={{opacity: 0}}
                                 animate={{opacity: 1}}
+                                transition={{ delay: 0.5 }}
                             >
                                 <InformationContainer information={information}/>
                             </motion.section>
