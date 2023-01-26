@@ -6,6 +6,7 @@ import InformationContainer from "@/components/InformationContainer";
 import AppContainer from "@/components/AppContainer";
 
 export default function Home() {
+    const [themeLocated, setThemeLocated] = useState(false)
     const [isDark, setIsDark] = useState(false)
 
     const switchTheme = () => {
@@ -30,6 +31,8 @@ export default function Home() {
             setIsDark(themeMode === "dark")
         }
 
+        setThemeLocated(true)
+
         return () => query.removeEventListener('change', onChange)
     }, [])
 
@@ -43,7 +46,7 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main className={isDark ? "dark" : ""}>
-                <AppContainer isDark={isDark} switchTheme={switchTheme}/>
+                {themeLocated && <AppContainer isDark={isDark} switchTheme={switchTheme}/>}
             </main>
         </>
     )
