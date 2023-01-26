@@ -9,9 +9,15 @@ export default function AppContainer(props: {
     switchTheme: () => void
 }) {
     const [information, setInformation] = useState()
+    const [isSearching, setIsSearching] = useState(false)
 
     const search = async (query: string) => {
-        if (query.length === 0) return
+        if (query.length === 0) {
+            alert("You have to enter a username.")
+            return
+        }
+
+        setIsSearching(true)
 
         const response = await fetch("/api/search?username=" + query)
 
@@ -32,6 +38,8 @@ export default function AppContainer(props: {
                 alert("We seem to have encountered an unknown error. Please try again.")
 
         }
+
+        setIsSearching(false)
     }
 
     return (
@@ -45,7 +53,7 @@ export default function AppContainer(props: {
                         <ThemeToggle isDark={props.isDark} clickHandler={props.switchTheme}/>
                     </motion.section>
 
-                    <SearchBar handleSearch={search}/>
+                    <SearchBar handleSearch={search} isSearching={isSearching}/>
 
                     <AnimatePresence>
                         {information !== undefined && (
