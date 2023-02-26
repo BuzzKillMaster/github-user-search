@@ -2,39 +2,32 @@ import React, {useEffect, useState} from "react";
 import AppContainer from "@/components/AppContainer";
 
 export default function Home() {
-    const [themeLocated, setThemeLocated] = useState(false)
-    const [isDark, setIsDark] = useState(false)
-
-    const switchTheme = () => {
-        setTheme(!isDark)
-        setIsDark(!isDark)
-    }
-
-    const setTheme = (isDark: boolean) => {
-        localStorage.setItem("themeMode", isDark ? "dark" : "light")
-    }
+    const [useDarkTheme, setUseDarkTheme] = useState<boolean | null>(null)
 
     useEffect(() => {
-        const themeMode = localStorage.getItem("themeMode")
-        const query = window.matchMedia('(prefers-color-scheme: dark)')
+        const darkTheme = localStorage.getItem("useDarkTheme")
+        const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
 
-        const onChange = (event: MediaQueryListEvent) => setIsDark(event.matches)
+        const onChange = (event: MediaQueryListEvent) => setUseDarkTheme(event.matches)
 
-        if (themeMode === null) {
-            setIsDark(query.matches)
-            query.addEventListener('change', onChange)
+        if (darkTheme !== null) {
+            setUseDarkTheme(darkTheme === "true")
         } else {
-            setIsDark(themeMode === "dark")
+            setUseDarkTheme(mediaQuery.matches)
+            mediaQuery.addEventListener('change', onChange)
         }
 
-        setThemeLocated(true)
+        return () => mediaQuery.removeEventListener('change', onChange)
+    }, [useDarkTheme])
 
-        return () => query.removeEventListener('change', onChange)
-    }, [])
+    const switchTheme = () => {
+        localStorage.setItem("useDarkTheme", (!useDarkTheme).toString())
+        setUseDarkTheme(!useDarkTheme)
+    }
 
     return (
-        <main className={isDark ? "dark" : ""}>
-            {themeLocated && <AppContainer isDark={isDark} switchTheme={switchTheme}/>}
+        <main className={useDarkTheme ? "dark" : ""}>
+            {useDarkTheme !== null && <AppContainer isDark={useDarkTheme} switchTheme={switchTheme}/>}
         </main>
     )
 }
