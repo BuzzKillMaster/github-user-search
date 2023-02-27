@@ -9,7 +9,7 @@ export default function AppContainer(props: {
     useDarkTheme: boolean
     switchTheme: () => void
 }) {
-    const [information, setInformation] = useState<DeveloperInformation>()
+    const [information, setInformation] = useState<DeveloperInformation | null>(null)
     const [isSearching, setIsSearching] = useState(false)
 
     const search = async (query: string) => {
@@ -58,7 +58,7 @@ export default function AppContainer(props: {
 
                     <div className={"grid"}>
                         <AnimatePresence>
-                            {information !== undefined && (
+                            {information !== null && (
                                 <motion.section layout
                                                 key={information.name}
                                                 initial={{opacity: 0}}
