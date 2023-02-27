@@ -13,14 +13,16 @@ export default function AppContainer(props: {
     const [isSearching, setIsSearching] = useState(false)
 
     const search = async (query: string) => {
-        if (query.trim().length === 0) {
+        const trimmedQuery = query.trim()
+
+        if (trimmedQuery.length === 0) {
             alert("You have to enter a username.")
             return
         }
 
         setIsSearching(true)
 
-        const response = await fetch("/api/search?username=" + query)
+        const response = await fetch("/api/search?username=" + trimmedQuery)
 
         switch (response.status) {
             case 200:
