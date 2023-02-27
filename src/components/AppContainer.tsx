@@ -13,7 +13,7 @@ export default function AppContainer(props: {
     const [isSearching, setIsSearching] = useState(false)
 
     const search = async (query: string) => {
-        if (query.length === 0) {
+        if (query.trim().length === 0) {
             alert("You have to enter a username.")
             return
         }
