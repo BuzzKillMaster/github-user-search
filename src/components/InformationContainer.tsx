@@ -25,7 +25,10 @@ export default function InformationContainer(props: DeveloperInformation) {
                     </small>
                 </div>
 
-                <small className={"font-semibold"}>{new Date(props.created_at).toDateString()}</small>
+                <div className={"flex flex-col items-end font-semibold"}>
+                    <small>Member since</small>
+                    <small>{new Date(props.created_at).toLocaleDateString()}</small>
+                </div>
             </div>
 
 
