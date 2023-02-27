@@ -68,7 +68,7 @@ export default function AppContainer(props: {
                                                 exit={{ opacity: 0, transition: { duration: 0.5 } }}
                                                 className={"row-span-full col-span-full"}
                                 >
-                                    <InformationContainer information={information}/>
+                                    <InformationContainer {...information}/>
                                 </motion.section>
                             )}
                         </AnimatePresence>
