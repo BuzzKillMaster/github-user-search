@@ -8,9 +8,9 @@ const octokit = new Octokit({
 })
 
 export default async function handler(request: NextApiRequest, response: NextApiResponse) {
-    const username: string | null = typeof request.query["username"] === "string" ? request.query["username"] : null
+    const username = request.query["username"]
 
-    if (username === null) {
+    if (typeof username !== "string") {
         return response.status(400).end()
     }
 
