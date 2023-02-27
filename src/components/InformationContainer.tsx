@@ -16,7 +16,9 @@ export default function InformationContainer(props: DeveloperInformation) {
         <div className={"bg-gray-200 dark:bg-slate-700 p-6 rounded-xl mt-4"}>
             <div className={"flex justify-between"}>
                 <div>
-                    <h2 className={"text-lg font-bold"}>{stringChecker(props.name)}</h2>
+                    <a className={"hover:text-green-500"} href={props.html_url} target={"_blank"} rel={"noreferrer"}>
+                        <h2 className={"text-lg font-bold"}>{stringChecker(props.name)}</h2>
+                    </a>
 
                     <small className={"font-semibold"}>
                         <a className={"hover:text-green-500"} href={props.html_url} target={"_blank"} rel={"noreferrer"}>@{props.login}</a>
