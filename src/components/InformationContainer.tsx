@@ -42,8 +42,8 @@ export default function InformationContainer(props: DeveloperInformation) {
 
             <div className={"grid sm:grid-cols-2 text-sm font-semibold mt-6 gap-4"}>
                 <SocialsLink icon={<MdLocationOn/>} text={stringChecker(props.location)}/>
-                <SocialsLink icon={<BsTwitter/>} text={stringChecker(props.twitter_username)}/>
-                <SocialsLink icon={<AiOutlineLink/>} text={stringChecker(props.blog)}/>
+                <SocialsLink icon={<BsTwitter/>} text={stringChecker(props.twitter_username)} destination={"https://twitter.com/" + props.twitter_username}/>
+                <SocialsLink icon={<AiOutlineLink/>} text={stringChecker(props.blog)} destination={"https://" + props.blog}/>
                 <SocialsLink icon={<HiOutlineOfficeBuilding/>} text={stringChecker(props.company)}/>
             </div>
         </div>
