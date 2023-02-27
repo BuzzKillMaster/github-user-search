@@ -12,6 +12,8 @@ export default function InformationContainer(props: DeveloperInformation) {
         return input === null || input.length === 0 ? output : input
     }
 
+    const parseURL = (url: string) => url.match("^https?:\\/\\/") ? url : "https://" + url
+
     return (
         <div className={"bg-gray-200 dark:bg-slate-700 p-6 rounded-xl mt-4"}>
             <div className={"flex justify-between"}>
@@ -43,7 +45,7 @@ export default function InformationContainer(props: DeveloperInformation) {
             <div className={"grid sm:grid-cols-2 text-sm font-semibold mt-6 gap-4"}>
                 <SocialsLink icon={<MdLocationOn/>} text={stringChecker(props.location)}/>
                 <SocialsLink icon={<BsTwitter/>} text={stringChecker(props.twitter_username)} destination={"https://twitter.com/" + props.twitter_username}/>
-                <SocialsLink icon={<AiOutlineLink/>} text={stringChecker(props.blog)} destination={"https://" + props.blog}/>
+                <SocialsLink icon={<AiOutlineLink/>} text={stringChecker(props.blog)} destination={parseURL(props.blog)}/>
                 <SocialsLink icon={<HiOutlineOfficeBuilding/>} text={stringChecker(props.company)}/>
             </div>
         </div>
