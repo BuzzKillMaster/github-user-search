@@ -27,7 +27,7 @@ export default function Home() {
 
     return (
         <main className={useDarkTheme ? "dark" : ""}>
-            {useDarkTheme !== null && <AppContainer isDark={useDarkTheme} switchTheme={switchTheme}/>}
+            {useDarkTheme !== null && <AppContainer useDarkTheme={useDarkTheme} switchTheme={switchTheme}/>}
         </main>
     )
 }

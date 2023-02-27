@@ -6,7 +6,7 @@ import {motion, AnimatePresence, LayoutGroup} from "framer-motion"
 import DeveloperInformation from "@/types/DeveloperInformation";
 
 export default function AppContainer(props: {
-    isDark: boolean
+    useDarkTheme: boolean
     switchTheme: () => void
 }) {
     const [information, setInformation] = useState<DeveloperInformation>()
@@ -51,7 +51,7 @@ export default function AppContainer(props: {
                     <motion.section layout transition={{ duration: 0.5 }} className={"flex justify-between items-center mb-8"}>
                         <h1 className={"text-xl font-bold"}>DevFinder</h1>
 
-                        <ThemeToggle isDark={props.isDark} clickHandler={props.switchTheme}/>
+                        <ThemeToggle useDarkTheme={props.useDarkTheme} clickHandler={props.switchTheme}/>
                     </motion.section>
 
                     <SearchBar handleSearch={search} isSearching={isSearching}/>
