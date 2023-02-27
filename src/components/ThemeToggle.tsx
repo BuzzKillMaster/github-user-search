@@ -3,10 +3,10 @@ import {BsFillMoonFill, BsFillSunFill} from "react-icons/bs";
 
 export default function ThemeToggle(props: {
     useDarkTheme: boolean
-    clickHandler: () => void
+    switchTheme: () => void
 }) {
     return (
-        <div onClick={props.clickHandler} className={"flex items-center cursor-pointer hover:text-green-500"}>
+        <div onClick={props.switchTheme} className={"flex items-center cursor-pointer hover:text-green-500"}>
             <p className={"text-sm font-semibold mr-4"}>{props.useDarkTheme ? "Dark" : "Light"}</p>
             {props.useDarkTheme ? <BsFillMoonFill/> : <BsFillSunFill/>}
         </div>

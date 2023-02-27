@@ -53,7 +53,7 @@ export default function AppContainer(props: {
                     <motion.section layout transition={{ duration: 0.5 }} className={"flex justify-between items-center mb-8"}>
                         <h1 className={"text-xl font-bold"}>DevFinder</h1>
 
-                        <ThemeToggle useDarkTheme={props.useDarkTheme} clickHandler={props.switchTheme}/>
+                        <ThemeToggle useDarkTheme={props.useDarkTheme} switchTheme={props.switchTheme}/>
                     </motion.section>
 
                     <SearchBar handleSearch={search} isSearching={isSearching}/>
